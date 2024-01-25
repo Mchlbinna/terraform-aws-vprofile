@@ -1,8 +1,8 @@
 resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
-  application = aws_elastic_beanstalk_application.vprofile-prod
-  name        = "vprofile-bean-prod"
+  application         = aws_elastic_beanstalk_application.vprofile-prod.name
+  name                = "vprofile-bean-prod"
   solution_stack_name = "64bit Amazon Linux 2023 v5.1.2 running Tomcat 9 Corretto 11"
-  cname_prefix = "vprofilee-beann-prod-dormain"
+  cname_prefix        = "vprofilee-beann-prod-dormain"
   setting {
     name      = "VPCId"
     namespace = "aws:ec2:vpc"
@@ -21,12 +21,12 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     name      = "subnets"
     namespace = "aws:ec2:vpc"
-    value     = join(",",[module.vpc.private_subnets[0], module.vpc.private_subnets[1], module.vpc.private_subnets[2]])
+    value     = join(",", [module.vpc.private_subnets[0], module.vpc.private_subnets[1], module.vpc.private_subnets[2]])
   }
   setting {
     name      = "ELBSubnets"
     namespace = "aws:ec2:vpc"
-    value     = join(",",[module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]])
+    value     = join(",", [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]])
   }
   setting {
     name      = "InstanceType"
@@ -118,5 +118,5 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     namespace = "aws:elbv2:loadbalancer"
     value     = aws_security_group.vprofile-bean-elb-SG.id
   }
-  depends_on = [aws_security_group.vprofile-bean-elb-SG,aws_security_group.vprofile-prod-SG]
+  depends_on = [aws_security_group.vprofile-bean-elb-SG, aws_security_group.vprofile-prod-SG]
 }
