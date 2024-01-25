@@ -9,6 +9,26 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     value     = module.vpc.vpc_id
   }
   setting {
+    name      = "ServiceRole"
+    namespace = "aws:elasticbeanstalk:environment"
+    value     = "aws-elasticbeanstalk-service-role"
+  }
+  setting {
+    name      = "EnvironmentType"
+    namespace = "aws:elasticbeanstalk:environment"
+    value     = "LoadBalanced"
+  }
+  setting {
+    name      = "LoadBalancerType"
+    namespace = "aws:elasticbeanstalk:environment"
+    value     = "application"
+  }
+  setting {
+    name      = "LoadBalancerIsShared"
+    namespace = "aws:elasticbeanstalk:environment"
+    value     = "false"
+  }
+  setting {
     name      = "IamInstanceProfile"
     namespace = "aws:autoscaling:launchconfiguration"
     value     = "aws-elasticbeanstalk-ec2-role"
