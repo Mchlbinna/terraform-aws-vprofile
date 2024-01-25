@@ -10,7 +10,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   }
   setting {
     name      = "IamInstanceProfile"
-    namespace = "aws:autoscalind:launchconfiguration"
+    namespace = "aws:autoscaling:launchconfiguration"
     value     = "aws-elasticbeanstalk-ec2-role"
   }
   setting {
