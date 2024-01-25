@@ -68,11 +68,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     namespace = "aws:elasticbeanstalk:healthreporting:system"
     value     = "enhanced"
   }
-  setting {
-    name      = "RollingUpdateEnhanced"
-    namespace = "aws:autoscaling:updatepolicy:rollingupdate"
-    value     = "true"
-  }
+
   setting {
     name      = "RollingUpdateType"
     namespace = "aws:autoscaling:updatepolicy:rollingupdate"
