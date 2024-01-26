@@ -2,32 +2,13 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   application         = aws_elastic_beanstalk_application.vprofile-prod.name
   name                = "vprofile-bean-prod"
   solution_stack_name = "64bit Amazon Linux 2023 v5.1.2 running Tomcat 9 Corretto 11"
-  cname_prefix        = "vprofilee-beann-prod-dormain"
+  cname_prefix        = "vprofile-bean-prod-dormain"
   setting {
     name      = "VPCId"
     namespace = "aws:ec2:vpc"
     value     = module.vpc.vpc_id
   }
-  setting {
-    name      = "ServiceRole"
-    namespace = "aws:elasticbeanstalk:environment"
-    value     = "aws-elasticbeanstalk-service-role"
-  }
-  setting {
-    name      = "EnvironmentType"
-    namespace = "aws:elasticbeanstalk:environment"
-    value     = "LoadBalanced"
-  }
-  setting {
-    name      = "LoadBalancerType"
-    namespace = "aws:elasticbeanstalk:environment"
-    value     = "application"
-  }
-  setting {
-    name      = "LoadBalancerIsShared"
-    namespace = "aws:elasticbeanstalk:environment"
-    value     = "false"
-  }
+
   setting {
     name      = "AssociatePublicIpAddress"
     namespace = "aws:ec2:vpc"
@@ -36,7 +17,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     name      = "IamInstanceProfile"
     namespace = "aws:autoscaling:launchconfiguration"
-    value     = "arn:aws:iam::123456789012:instance-profile/aws-elasticbeanstalk-ec2-role"
+    value     = "aws-elasticbeanstalk-ec2-role"
   }
   setting {
     name      = "subnets"
