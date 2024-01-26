@@ -17,7 +17,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     name      = "IamInstanceProfile"
     namespace = "aws:autoscaling:launchconfiguration"
-    value     = "aws-elasticbeanstalk-ec2-role"
+    value     = "vprofilee-bean-role"
   }
   setting {
     name      = "subnets"
