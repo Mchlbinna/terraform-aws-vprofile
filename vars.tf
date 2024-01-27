@@ -20,11 +20,11 @@ variable "PUB_KEY_PATH" {
 }
 
 variable "USERNAME" {
-  default = "Ubuntu"
+  default = "ubuntu"
 }
 
 variable "MYIP" {
-  default = "102.89.43.203/32"
+  default = "0.0.0.0/0"
 }
 
 variable "rmquser" {
