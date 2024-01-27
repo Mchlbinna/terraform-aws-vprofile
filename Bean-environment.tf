@@ -115,5 +115,6 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     namespace = "aws:elbv2:loadbalancer"
     value     = aws_security_group.vprofile-bean-elb-SG.id
   }
+
   depends_on = [aws_security_group.vprofile-bean-elb-SG, aws_security_group.vprofile-prod-SG]
 }
